@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动物世界观察日记：那些藏在自然里的生命奇迹</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 配置Tailwind自定义样式 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5B4E', // 自然绿
+                        secondary: '#F2C94C', // 暖黄
+                        accent: '#E76F51', // 橙红
+                        dark: '#263238', // 深灰
+                        light: '#F8F9FA' // 浅灰
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Merriweather', 'Georgia', 'serif']
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .img-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .img-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            }
+            .section-fade {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+            .section-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <!-- 引入Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark font-sans">
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <i class="fa fa-paw text-primary text-2xl"></i>
+                <span class="font-bold text-xl text-primary">动物世界观察</span>
+            </a>
+            <nav class="hidden md:flex gap-6">
+                <a href="#home" class="text-dark/80 hover:text-primary transition-colors">首页</a>
+                <a href="#rainforest" class="text-dark/80 hover:text-primary transition-colors">雨林动物</a>
+                <a href="#polar" class="text-dark/80 hover:text-primary transition-colors">极地动物</a>
+                <a href="#savanna" class="text-dark/80 hover:text-primary transition-colors">草原动物</a>
+                <a href="#ocean" class="text-dark/80 hover:text-primary transition-colors">海洋动物</a>
+                <a href="#relationship" class="text-dark/80 hover:text-primary transition-colors">人与动物</a>
+            </nav>
+            <button class="md:hidden text-dark text-xl" id="menuToggle">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-white shadow-md absolute w-full" id="mobileMenu">
+            <div class="container mx-auto px-4 py-3 flex flex-col gap-3">
+                <a href="#home" class="text-dark/80 hover:text-primary py-2 transition-colors">首页</a>
+                <a href="#rainforest" class="text-dark/80 hover:text-primary py-2 transition-colors">雨林动物</a>
+                <a href="#polar" class="text-dark/80 hover:text-primary py-2 transition-colors">极地动物</a>
+                <a href="#savanna" class="text-dark/80 hover:text-primary py-2 transition-colors">草原动物</a>
+                <a href="#ocean" class="text-dark/80 hover:text-primary py-2 transition-colors">海洋动物</a>
+                <a href="#relationship" class="text-dark/80 hover:text-primary py-2 transition-colors">人与动物</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- 在线动物全景图片 - 公共可访问 -->
+            <img src="https://picsum.photos/id/1043/1920/1080" alt="动物世界全景" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-dark/40"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-white text-shadow mb-4 leading-tight">
+                动物世界观察日记
+            </h1>
+            <p class="text-[clamp(1.2rem,2vw,1.5rem)] text-white/90 max-w-3xl mx-auto mb-8">
+                那些藏在自然里的生命奇迹，勾勒出地球最鲜活的模样
+            </p>
+            <a href="#rainforest" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-full transition-all shadow-lg hover:shadow-xl">
+                开始探索 <i class="fa fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+        <div class="absolute bottom-6 left-0 right-0 flex justify-center animate-bounce">
+            <a href="#rainforest" class="text-white text-2xl">
+                <i class="fa fa-angle-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 py-16">
+        <!-- 引言部分 -->
+        <section class="max-w-3xl mx-auto mb-20 text-center">
+            <p class="text-lg text-dark/70 leading-relaxed">
+                自然的每一个角落，都藏着动物们独特的生存智慧。从热带雨林的茂密树冠到极地冰川的苍茫雪原，
+                它们用灵动、坚韧与温情，演绎着生命的多样与神奇。让我们一起走进不同生态中的动物故事。
+            </p>
+        </section>
+
+        <!-- 雨林动物 - 蜂鸟 -->
+        <section id="rainforest" class="mb-32 section-fade">
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+                <div class="md:w-1/2">
+                    <div class="rounded-xl overflow-hidden shadow-xl img-hover">
+                        <!-- 蜂鸟在线图片 - 动物专属ID，服务器可访问 + 兜底容错 -->
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/6e6f00fe1449437598a32c84e0d62568.png~tplv-a9rns2rl98-image.png?rcl=20260102150741FD5A0E862B602EB93E01&rk3s=8e244e95&rrcfp=dafada99&x-expires=2083561662&x-signature=BbsqVA7SWEyCc8tBNvA2hT3wnmA%3D" alt="蜂鸟悬停吸食花蜜" class="w-full h-auto" onerror="this.src='https://picsum.photos/id/1043/800/600'">
+                    </div>
+                    <p class="text-sm text-dark/60 mt-3 italic text-center">
+                        图注：一只彩虹蜂鸟悬停在花朵旁，细长的喙正探入花蕊取食，翅膀振动留下模糊的残影
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                        热带雨林的空中精灵
+                    </span>
+                    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dark mb-6">蜂鸟</h2>
+                    <div class="space-y-4 text-dark/80 leading-relaxed">
+                        <p>
+                            在南美亚马逊雨林的晨光里，总能看到一闪而过的彩色身影——那是蜂鸟在花间穿梭。它们是世界上最小的鸟类，体重仅2-6克，翅膀每秒振动50-80次，能悬停、倒飞甚至侧飞，宛如会飞的宝石。
+                        </p>
+                        <p>
+                            蜂鸟的喙细长如针，专门用来吸食花蜜，而它们在取食时，身上沾染的花粉会帮助植物授粉，成为雨林生态的"隐形纽带"。
+                        </p>
+                        <div class="bg-secondary/10 p-4 rounded-lg border-l-4 border-secondary">
+                            <p class="font-medium">动物冷知识：</p>
+                            <p>为了节省能量，蜂鸟在夜间会进入"休眠状态"，体温从40℃降至18℃左右，心跳和呼吸频率大幅降低，等到黎明再苏醒觅食。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 极地动物 - 北极熊 -->
+        <section id="polar" class="mb-32 section-fade">
+            <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
+                <div class="md:w-1/2">
+                    <div class="rounded-xl overflow-hidden shadow-xl img-hover">
+                        <!-- 北极熊在线图片 - 动物专属ID，服务器可访问 + 兜底容错 -->
+                        <img src="https://imgs-qn.51miz.com/2017/05/03/20/2017050320424649_P779406_b7fef2a3O.jpg?imageMogr2/quality/100|imageMogr2/format/webp" alt="北极熊在冰原上行走" class="w-full h-auto" onerror="this.src='https://picsum.photos/id/1043/800/600'">
+                    </div>
+                    <p class="text-sm text-dark/60 mt-3 italic text-center">
+                        图注：一只成年北极熊行走在北极的浮冰上，背景是苍茫的白色荒原与湛蓝的天空
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <span class="inline-block px-4 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
+                        极地荒原的冰雪王者
+                    </span>
+                    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dark mb-6">北极熊</h2>
+                    <div class="space-y-4 text-dark/80 leading-relaxed">
+                        <p>
+                            北极的冰原上，北极熊是绝对的顶级掠食者。它们身披厚重的白色毛发（毛发实际是透明的，能反射光线），皮下脂肪层厚达10厘米，足以抵御-40℃的严寒。
+                        </p>
+                        <p>
+                            宽大的脚掌带有防滑垫，游泳时还能像船桨一样划水，最远可连续游泳数十公里寻找浮冰和猎物。北极熊主要以海豹为食，它们会耐心趴在冰洞旁数小时，等待海豹浮出水面换气时发起致命一击。
+                        </p>
+                        <div class="bg-accent/10 p-4 rounded-lg border-l-4 border-accent">
+                            <p class="font-medium flex items-center gap-2">
+                                <i class="fa fa-exclamation-triangle"></i> 保护警示：
+                            </p>
+                            <p>随着全球气候变暖，北极冰盖不断消融，北极熊的捕猎范围逐渐缩小，生存面临严峻挑战，成为气候变化的"直观预警者"。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 草原动物 - 非洲野犬 -->
+        <section id="savanna" class="mb-32 section-fade">
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+                <div class="md:w-1/2">
+                    <div class="rounded-xl overflow-hidden shadow-xl img-hover">
+                        <!-- 非洲野犬在线图片 - 动物专属ID，服务器可访问 + 兜底容错 -->
+                        <img src="data:image/webp;base64,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" alt="非洲野犬群体出行" class="w-full h-auto" onerror="this.src='https://picsum.photos/id/1043/800/600'">
+                    </div>
+                    <p class="text-sm text-dark/60 mt-3 italic text-center">
+                        图注：一群非洲野犬在草原上奔跑，斑纹在阳光下格外醒目，展现出协作与活力
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <span class="inline-block px-4 py-1 bg-secondary/10 text-secondary rounded-full text-sm font-medium mb-4">
+                        非洲草原的合作典范
+                    </span>
+                    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dark mb-6">非洲野犬</h2>
+                    <div class="space-y-4 text-dark/80 leading-relaxed">
+                        <p>
+                            非洲稀树草原上，非洲野犬是极具团队精神的猎手。它们体型中等，身上布满黑白棕相间的独特斑纹，每一只的斑纹都像人类的指纹一样独一无二。
+                        </p>
+                        <p>
+                            与其他掠食者不同，非洲野犬以"集体作战"闻名，群体规模通常在10-40只之间。狩猎时，它们会分工明确：有的负责追逐驱赶猎物，有的负责包抄拦截，凭借出色的耐力（能以每小时50公里的速度奔跑数公里）耗垮猎物。
+                        </p>
+                        <div class="bg-secondary/10 p-4 rounded-lg border-l-4 border-secondary">
+                            <p class="font-medium">社群特性：</p>
+                            <p>捕猎成功后，它们会优先让幼崽和年老体弱的成员进食，展现出极强的社群凝聚力。如今，由于栖息地丧失和人类活动影响，非洲野犬已成为濒危物种，全球数量不足7000只。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 海洋动物 - 座头鲸 -->
+        <section id="ocean" class="mb-32 section-fade">
+            <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
+                <div class="md:w-1/2">
+                    <div class="rounded-xl overflow-hidden shadow-xl img-hover">
+                        <!-- 座头鲸在线图片 - 动物专属ID，服务器可访问 + 兜底容错 -->
+                        <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.LbBZI2D5TDxhZdFl2aKhYwHaE7?w=249&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="座头鲸跃出海面" class="w-full h-auto" onerror="this.src='https://picsum.photos/id/1043/800/600'">
+                    </div>
+                    <p class="text-sm text-dark/60 mt-3 italic text-center">
+                        图注：一头座头鲸跃出湛蓝的海面，巨大的身体在空中舒展，周围溅起白色的浪花
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+                        海洋深处的温柔巨人
+                    </span>
+                    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dark mb-6">座头鲸</h2>
+                    <div class="space-y-4 text-dark/80 leading-relaxed">
+                        <p>
+                            深海之中，座头鲸是令人震撼的"音乐大师"。它们体长可达15米，体重约30吨，却性情温和，以小型甲壳类和鱼类为食。
+                        </p>
+                        <p>
+                            座头鲸的歌声复杂而优美，能持续数小时，且不同群体有独特的"歌声方言"，科学家推测这是它们用于交流、求偶的重要方式。每年冬季，座头鲸会从寒冷的极地海域迁徙到温暖的热带海域繁殖，迁徙距离可达数千公里，是海洋中最长的迁徙之一。
+                        </p>
+                        <div class="bg-primary/10 p-4 rounded-lg border-l-4 border-primary">
+                            <p class="font-medium">行为奇观：</p>
+                            <p>它们会展现出"跃身击浪"的行为——整个身体冲出水面再重重落下，溅起巨大的水花，目前认为这可能是为了去除身上的寄生虫，或是与同伴传递信号。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 人类对于人与动物关系的理解 -->
+        <section id="relationship" class="mb-32 section-fade">
+            <div class="max-w-4xl mx-auto">
+                <span class="inline-block px-4 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium mb-4">
+                    文明的觉醒与共生的智慧
+                </span>
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dark mb-8 text-center">人类对于人与动物关系的理解</h2>
+                
+                <div class="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+                    <div class="flex gap-6 items-start">
+                        <div class="flex-shrink-0 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl">
+                            <i class="fa fa-history"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 text-dark">从利用到敬畏：认知的演变</h3>
+                            <p class="text-dark/80 leading-relaxed">
+                                人类对动物的认知经历了漫长的演变。远古时期，动物是生存的资源与威胁，人类依赖狩猎获取食物，同时躲避猛兽的侵袭。农业文明出现后，部分动物被驯化，成为人类生产生活的伙伴。进入工业文明，人类对自然的改造能力大幅提升，曾一度将动物视为可无限索取的资源，导致大量物种濒临灭绝。如今，随着生态意识的觉醒，人类开始重新审视与动物的关系，认识到每一个物种都是生态系统的重要组成部分。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 items-start">
+                        <div class="flex-shrink-0 w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center text-secondary text-2xl">
+                            <i class="fa fa-balance-scale"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 text-dark">从征服到平等：伦理的觉醒</h3>
+                            <p class="text-dark/80 leading-relaxed">
+                                传统观念中，人类以"万物之灵"自居，将动物视为被征服的对象。而现代动物伦理学则提出，动物同样拥有感知痛苦与快乐的能力，应当享有基本的生存权利。世界各国相继出台动物保护法，禁止虐待动物，规范养殖、实验等领域的动物福利。这种伦理觉醒，不仅是对动物的尊重，更是人类文明进步的重要标志。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6 items-start">
+                        <div class="flex-shrink-0 w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center text-accent text-2xl">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2 text-dark">从独立到共生：生态的共识</h3>
+                            <p class="text-dark/80 leading-relaxed">
+                                生态科学的发展让人类认识到，地球是一个相互依存的生态系统，人与动物共享同一个家园。北极熊的生存危机、非洲野犬的濒危，都与人类活动密切相关。保护动物，就是保护生态平衡，最终也是保护人类自身。如今，"人与自然和谐共生"已成为全球共识，从建立自然保护区到开展物种拯救计划，从减少塑料污染到应对气候变化，人类正在用实际行动修复与动物的关系。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark/5 p-6 rounded-lg border-l-4 border-primary mt-8">
+                        <p class="text-dark/90 leading-relaxed italic">
+                            "当我们拯救了一个物种，我们就拯救了整个生态系统的一部分；当我们保护了所有物种，我们就保护了人类自己的未来。"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结语部分 -->
+        <section class="max-w-3xl mx-auto text-center section-fade">
+            <div class="bg-primary/5 p-8 rounded-2xl border border-primary/10">
+                <h2 class="text-2xl font-bold text-dark mb-4">人与自然的和谐共生</h2>
+                <p class="text-dark/80 leading-relaxed mb-6">
+                    动物世界的精彩，远不止于此。每一种生物都在以自己的方式适应自然、守护家园，它们的故事也提醒着我们：人与自然和谐共生，才是地球最美的模样。
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-medium px-5 py-2 rounded-full transition-all">
+                        <i class="fa fa-book"></i> 阅读更多动物故事
+                    </a>
+                    <a href="#" class="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-primary border border-primary font-medium px-5 py-2 rounded-full transition-all">
+                        <i class="fa fa-share-alt"></i> 分享这篇文章
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 图片画廊 -->
+    <section class="bg-dark py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white text-center mb-12">动物世界精彩瞬间</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- 画廊图片全部使用在线公共URL，服务器可访问 -->
+                <div class="overflow-hidden rounded-lg img-hover h-64">
+                    <img src="https://picsum.photos/id/1024/600/400" alt="野生动物" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg img-hover h-64">
+                    <img src="https://picsum.photos/id/1074/600/400" alt="野生动物" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg img-hover h-64">
+                    <img src="https://picsum.photos/id/1084/600/400" alt="野生动物" class="w-full h-full object-cover">
+                </div>
+                <div class="overflow-hidden rounded-lg img-hover h-64">
+                    <img src="https://picsum.photos/id/1069/600/400" alt="野生动物" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark/95 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <i class="fa fa-paw text-secondary text-2xl"></i>
+                        <span class="font-bold text-xl">动物世界观察</span>
+                    </div>
+                    <p class="text-white/70 mb-6 leading-relaxed">
+                        探索自然之美，记录动物故事，倡导人与自然和谐共生。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-white/70 hover:text-secondary transition-colors text-xl">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-white/70 hover:text-secondary transition-colors text-xl">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white/70 hover:text-secondary transition-colors text-xl">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-white/70 hover:text-secondary transition-colors text-xl">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-white/70 hover:text-secondary transition-colors">首页</a></li>
+                        <li><a href="#rainforest" class="text-white/70 hover:text-secondary transition-colors">雨林动物</a></li>
+                        <li><a href="#polar" class="text-white/70 hover:text-secondary transition-colors">极地动物</a></li>
+                        <li><a href="#savanna" class="text-white/70 hover:text-secondary transition-colors">草原动物</a></li>
+                        <li><a href="#ocean" class="text-white/70 hover:text-secondary transition-colors">海洋动物</a></li>
+                        <li><a href="#relationship" class="text-white/70 hover:text-secondary transition-colors">人与动物</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">订阅更新</h3>
+                    <p class="text-white/70 mb-4">
+                        订阅我们的 newsletter，获取最新的动物故事和保护资讯
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-full w-full focus:outline-none text-dark">
+                        <button type="submit" class="bg-secondary hover:bg-secondary/90 text-dark font-medium px-4 py-2 rounded-r-full transition-colors">
+                            订阅
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-12 pt-8 text-center text-white/50 text-sm">
+                <p>© 2025 动物世界观察日记 版权所有 | 保护动物 从我做起</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 invisible">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuToggle.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // 滚动动画
+        const sections = document.querySelectorAll('.section-fade');
+        const backToTop = document.getElementById('backToTop');
+
+        function checkScroll() {
+            const triggerBottom = window.innerHeight * 0.8;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('section-visible');
+                }
+            });
+
+            // 显示/隐藏返回顶部按钮
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        }
+
+        // 节流函数优化滚动性能
+        function throttle(fn, delay = 100) {
+            let timer = null;
+            return function() {
+                if (!timer) {
+                    timer = setTimeout(() => {
+                        fn.apply(this, arguments);
+                        timer = null;
+                    }, delay);
+                }
+            }
+        }
+
+        // 返回顶部功能
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动端菜单
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 初始化检查
+        window.addEventListener('scroll', throttle(checkScroll));
+        window.addEventListener('load', checkScroll);
+    </script>
+</body>
+</html>
